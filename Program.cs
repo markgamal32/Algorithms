@@ -9,9 +9,9 @@ namespace Algorithms_0
 	{
 		// an algorithm to find max number 
 		//                ====================
-		// Big O notation, represents an algorithm's worst-case complexity. It uses algebraic terms to describe
-		// the complexity of an algorithm. Big O defines the runtime required to execute an algorithm
-		// by identifying how the performance of your algorithm will change as the input size grows
+		/* Big O notation, represents an algorithm's worst-case complexity. It uses algebraic terms to describe
+		 the complexity of an algorithm.Big O defines the runtime required to execute an algorithm
+		 by identifying how the performance of your algorithm will change as the input size grows */
 		static int findMaximum2(int a, int b, int c)
 		{
 			int max = a;
@@ -28,8 +28,6 @@ namespace Algorithms_0
 
 			return max;
 		}
-		
-
 		// string validation algorithm
 		static Boolean IsUpperCase(string s)
 		{
@@ -44,15 +42,11 @@ namespace Algorithms_0
 		{
 			return password.Any(char.IsUpper) && password.All(char.IsLower) && password.All(char.IsDigit);
 		}
-
-
 		// normalize string 
 		static string NormalizeString(String input)
 		{
 			return input.ToLower().Trim().Replace(",", "");
 		}
-
-
 		// find out if a certain char exists at an even index or even location
 		static Boolean IsAtEvenIndex(String s, char item)
 		{
@@ -115,7 +109,31 @@ namespace Algorithms_0
 
 			return false;
 		}
+		// Binary search array in C# in case the array is sorted already --- start from middle 
+		static Boolean BinarySearch1(int[] inputArray, int item)
+		{
+			int min = 0;
+			int max = inputArray.Length - 1;
 
+			while (min <= max)
+			{
+				int mid = (min + max) / 2;
+				if (item == inputArray[mid])
+				{
+					return true;
+				}
+				else if (item < inputArray[mid])
+				{
+					max = mid - 1;
+				}
+				else
+				{
+					min = mid + 1;
+				}
+			}
+
+			return false;
+		}
 
 
 
@@ -165,6 +183,24 @@ namespace Algorithms_0
 			Console.WriteLine(item);
 			int[] items = Array.FindAll(arr, element => element >= 5);
 			Array.ForEach(items, Console.WriteLine);
+
+
+			// Binary search array
+			int[] arr1 = { 1, 2, 3, 4, 5, 6 };
+			Console.WriteLine(BinarySearch1(arr1, 5));
+			// built-in array method for binary search
+			Array.BinarySearch(arr1, 5);
+
+
+
+
+
+
+
+
+
+
+
 
 
 		}
