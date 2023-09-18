@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -134,6 +135,30 @@ namespace Algorithms_0
 
 			return false;
 		}
+		// Aggregate and filter arrays in C#
+		// function that two arrays and create new array with even numbers
+		static int[] FindEvenNums(int[] arr1, int[] arr2)
+		{
+			ArrayList result = new ArrayList();
+
+			foreach (int num in arr1)
+			{
+				if (num % 2 == 0)
+				{
+					result.Add(num);
+				}
+			}
+
+			foreach (int num in arr2)
+			{
+				if (num % 2 == 0)
+				{
+					result.Add(num);
+				}
+			}
+
+			return (int[])result.ToArray(typeof(int));
+		}
 
 
 
@@ -190,6 +215,13 @@ namespace Algorithms_0
 			Console.WriteLine(BinarySearch1(arr1, 5));
 			// built-in array method for binary search
 			Array.BinarySearch(arr1, 5);
+
+			// test --  function that two arrays and create new array with even numbers
+			int[] arr2 = { -8, 2, 3, -9, 11, -20 };
+			int[] arr3 = { 0, -2, -9, -39, 39, 10, 7 };
+
+			int[] evenArr = FindEvenNums(arr2, arr3);
+			Array.ForEach(evenArr, Console.WriteLine);
 
 
 
