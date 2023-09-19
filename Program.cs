@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using static Algorithms_0.CustomLinkedList;
 
 namespace Algorithms_0
 {
@@ -185,6 +186,20 @@ namespace Algorithms_0
 		}
 
 
+		// 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,13 +212,12 @@ namespace Algorithms_0
 		static void Main(string[] args)
 			{
 			// test findMaximum2
-				Console.WriteLine(findMaximum2(1, 2, 3));
-				Console.WriteLine(findMaximum2(8, 8, 1));
+			Console.WriteLine(findMaximum2(1, 2, 3));
+			Console.WriteLine(findMaximum2(8, 8, 1));
 
 			// test validation
 			Console.WriteLine(IsPasswordComplex("Hell0"));
 			Console.WriteLine(IsPasswordComplex("Hello"));
-
 
 			// test normalize string 
 			Console.WriteLine(NormalizeString(" Hello There, BUDDY      "));
@@ -222,7 +236,6 @@ namespace Algorithms_0
 			// test reverse function 2
 			Console.WriteLine(Reverse2("Hello World"));
 
-
 			//test Linear search arrays
 			int[] arr = { 1, 2, 3, 4, 5, 6 };
 			Console.WriteLine(LinearSearch(arr, 4));
@@ -232,7 +245,6 @@ namespace Algorithms_0
 			Console.WriteLine(item);
 			int[] items = Array.FindAll(arr, element => element >= 5);
 			Array.ForEach(items, Console.WriteLine);
-
 
 			// Binary search array
 			int[] arr1 = { 1, 2, 3, 4, 5, 6 };
@@ -247,18 +259,55 @@ namespace Algorithms_0
 			int[] evenArr = FindEvenNums(arr2, arr3);
 			Array.ForEach(evenArr, Console.WriteLine);
 
-
 			// test  -- Reverse an array in C#
 			int[] arr4 = { 1, 2, 3, 4, 5, 6 };
 			Array.ForEach(Reverse(arr4), Console.WriteLine);
 
 			ReverseInPlace(arr4);
 			Array.ForEach(arr4, Console.WriteLine);
+			Console.WriteLine();
 
 
 
+			/******       Common linked list operations in C#     ******/
 
+			LinkedList<string> listy = new LinkedList<string>();
+				// AddLast
+				// AddFirst
+				listy.AddLast("Sarah");
+				listy.AddLast("Polly");
+				listy.AddLast("Rebeca");
+				listy.AddLast("Jess");
+				listy.AddLast("Jackie");
 
+				Console.WriteLine(listy.Contains("Polly"));
+				Console.WriteLine(listy.Count);
+
+				listy.RemoveFirst();
+
+				foreach (string i in listy)
+				{
+					Console.Write(item + "->");
+				}
+
+				Console.WriteLine();
+
+			// 
+			CustomLinkedList linkedList = new CustomLinkedList();
+			Node firstNode = new Node(3);
+			Node secondNode = new Node(4);
+			Node thirdNode = new Node(5);
+			Node fourthNode = new Node(6);
+
+			linkedList.head = firstNode;
+			firstNode.next = secondNode;
+			secondNode.next = thirdNode;
+			thirdNode.next = fourthNode;
+
+			linkedList.displayContents();
+			linkedList.deleteBackHalf();
+			Console.WriteLine();
+			linkedList.displayContents();
 
 
 
