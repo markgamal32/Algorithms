@@ -148,7 +148,6 @@ namespace Algorithms_0
 					result.Add(num);
 				}
 			}
-
 			foreach (int num in arr2)
 			{
 				if (num % 2 == 0)
@@ -156,8 +155,33 @@ namespace Algorithms_0
 					result.Add(num);
 				}
 			}
-
+			// converting the type to array
 			return (int[])result.ToArray(typeof(int));
+		}
+
+		// Reverse an array in C#
+		static int[] Reverse(int[] input)
+		{
+			int[] reversed = new int[input.Length];
+
+			for (int i = 0; i < reversed.Length; i++)
+			{
+				reversed[i] = input[input.Length - i - 1];
+			}
+
+			return reversed;
+		}
+
+		static void ReverseInPlace(int[] input)
+		{
+
+			for (int i = 0; i < input.Length / 2; i++)
+			{
+				// Swap index(i) with index(input.Length - i - 1)
+				int temp = input[i];
+				input[i] = input[input.Length - i - 1];
+				input[input.Length - i - 1] = temp;
+			}
 		}
 
 
@@ -224,6 +248,12 @@ namespace Algorithms_0
 			Array.ForEach(evenArr, Console.WriteLine);
 
 
+			// test  -- Reverse an array in C#
+			int[] arr4 = { 1, 2, 3, 4, 5, 6 };
+			Array.ForEach(Reverse(arr4), Console.WriteLine);
+
+			ReverseInPlace(arr4);
+			Array.ForEach(arr4, Console.WriteLine);
 
 
 
