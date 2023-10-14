@@ -230,6 +230,8 @@ namespace Algorithms_0
 
 
 
+
+
 		//  ***********************************************************************************************************************  //
 		static void Main(string[] args)
 			{
@@ -358,14 +360,37 @@ namespace Algorithms_0
 				Console.WriteLine(current);
 			}
 
-			// create an algorithm that takes in a number N as input then it will print out the first N binary number in numerical order 
+			//an algorithm that takes in a number  N as input then  print out the first N binary number in numerical order 
 			printBinary(5);
 			printBinary(-2);
 			printBinary(0);
 			printBinary(2);
 			printBinary(8);
 
+			/*******    Stack   *******/
 
+			/* is a series of ordered objects just like list but follow the - LIFO - policy ,
+			 one example of the stack is the runtime stack which keep track of the execution of the program and processing nested functions,
+			 useful when you need to keep track on of state */
+			Stack<string> stack = new Stack<string>();
+
+			Console.WriteLine("Start Main");
+			stack.Push("Main");
+			Console.WriteLine("Start ResponseBuilder");
+			stack.Push("ResponseBuilder");
+			Console.WriteLine("Start CallExternalService");
+			stack.Push("CallExternalService");
+			Console.WriteLine("END " + stack.Pop());
+			Console.WriteLine("Start ParseExternalData");
+			stack.Push("ParseExternalData");
+			Console.WriteLine("END " + stack.Pop());
+			Console.WriteLine("END " + stack.Pop());
+			Console.WriteLine("END " + stack.Pop());
+
+			// stack.Peek()
+			// stack.TryPeek()
+			string item2;
+			Console.WriteLine(stack.TryPeek(out item2));
 
 
 
