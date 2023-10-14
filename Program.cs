@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Collections.Generic;
 using static Algorithms_0.CustomLinkedList;
 
 namespace Algorithms_0
@@ -44,11 +45,14 @@ namespace Algorithms_0
 		{
 			return password.Any(char.IsUpper) && password.All(char.IsLower) && password.All(char.IsDigit);
 		}
-		// normalize string 
+		/* normalize string(converting all the characters to certain case)
+		 makes the code is less complex by searching for one form or type of the data */ 
 		static string NormalizeString(String input)
 		{
 			return input.ToLower().Trim().Replace(",", "");
 		}
+
+
 		// find out if a certain char exists at an even index or even location
 		static Boolean IsAtEvenIndex(String s, char item)
 		{
@@ -185,9 +189,27 @@ namespace Algorithms_0
 			}
 		}
 
+		                                      /*******    Queue   *******/
+		// create an algorithm that takes in a number N as input then it will print out the first N binary number in numerical order 
+		static void printBinary(int n)
+		{
+			if (n <= 0)
+			{
+				return;
+			}
 
-		// 
+			Queue<int> queue = new Queue<int>();
+			queue.Enqueue(1);
+			for (int i = 0; i < n; i++)
+			{
+				int current = queue.Dequeue();
+				Console.WriteLine(current);
+				queue.Enqueue(current * 10);
+				queue.Enqueue(current * 10 + 1);
+			}
 
+			Console.WriteLine();
+		}
 
 
 
@@ -214,6 +236,10 @@ namespace Algorithms_0
 			// test findMaximum2
 			Console.WriteLine(findMaximum2(1, 2, 3));
 			Console.WriteLine(findMaximum2(8, 8, 1));
+
+			// is string uppercase 
+			Console.WriteLine(IsUpperCase("hello"));
+			 Console.WriteLine(IsUpperCase("HELLO"));
 
 			// test validation
 			Console.WriteLine(IsPasswordComplex("Hell0"));
@@ -270,9 +296,12 @@ namespace Algorithms_0
 
 
 			/******       Common linked list operations in C#     ******/
+			/* linked list is linear data structurer ,it generic collection, elements(-node-) are linked by pointers ,
+			  each node contains a piece of data 
+			  and data not stored contiguously so the size of the list can vary over time */
 
 			LinkedList<string> listy = new LinkedList<string>();
-				// AddLast
+				// AddLast 
 				// AddFirst
 				listy.AddLast("Sarah");
 				listy.AddLast("Polly");
@@ -292,22 +321,53 @@ namespace Algorithms_0
 
 				Console.WriteLine();
 
-			// 
+			//Custom Linked List using class 'CustomLinkedList'
+
 			CustomLinkedList linkedList = new CustomLinkedList();
 			Node firstNode = new Node(3);
-			Node secondNode = new Node(4);
+		    Node secondNode = new Node(4);
 			Node thirdNode = new Node(5);
 			Node fourthNode = new Node(6);
 
-			linkedList.head = firstNode;
-			firstNode.next = secondNode;
-			secondNode.next = thirdNode;
-			thirdNode.next = fourthNode;
+			/* Head of the list */          linkedList.head = firstNode;
+			                                firstNode.next = secondNode;
+			                                secondNode.next = thirdNode;
+			/*last node is called Tail */   thirdNode.next = fourthNode;
 
 			linkedList.displayContents();
 			linkedList.deleteBackHalf();
 			Console.WriteLine();
 			linkedList.displayContents();
+
+			// Queue contains the elements in the order they were added (-FIFO-) first in first out policy 
+			Queue<int> queue = new Queue<int>();
+
+			queue.Enqueue(1);
+			queue.Enqueue(8);
+			queue.Enqueue(20);
+			queue.Enqueue(23);
+
+			int removedItem = queue.Dequeue();
+			Console.WriteLine(removedItem);
+			Console.WriteLine(queue.Dequeue());
+			Console.WriteLine(queue.Peek());
+
+			int current;
+			while (queue.TryDequeue(out current))
+			{
+				Console.WriteLine(current);
+			}
+
+			// create an algorithm that takes in a number N as input then it will print out the first N binary number in numerical order 
+			printBinary(5);
+			printBinary(-2);
+			printBinary(0);
+			printBinary(2);
+			printBinary(8);
+
+
+
+
 
 
 
