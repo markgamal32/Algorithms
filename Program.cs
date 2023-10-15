@@ -262,6 +262,66 @@ namespace Algorithms_0
 		}
 
 
+		//  Stack algorithms- Matching parentheses
+		static Boolean hasMatchingParentheses(string s)
+		{
+			Stack<char> stack = new Stack<char>();
+
+			for (int i = 0; i < s.Length; i++)
+			{
+				char current = s[i];
+
+				if (current == '(')
+				{
+					stack.Push(current);
+					continue;
+				}
+
+				if (current == ')')
+				{
+					if (stack.Count > 0)
+					{
+						stack.Pop();
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+
+			return stack.Count == 0;
+		}
+
+		static Boolean hasMatchingParentheses2(string s)
+		{
+			int matchingSymbolTracker = 0;
+			for (int i = 0; i < s.Length; i++)
+			{
+				char current = s[i];
+
+				if (current == '(')
+				{
+					matchingSymbolTracker++;
+					continue;
+				}
+
+				if (current == ')')
+				{
+					if (matchingSymbolTracker > 0)
+					{
+						matchingSymbolTracker--;
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+
+			return matchingSymbolTracker == 0;
+		}
+
 
 
 
@@ -453,14 +513,43 @@ namespace Algorithms_0
 			printNextGreaterElement(stackArr2);
 			printNextGreaterElement(stackArr3);
 
+			// Stack algorithms- Matching parentheses
 
+			Console.WriteLine(hasMatchingParentheses2("((hello()))"));
+			Console.WriteLine(hasMatchingParentheses2("()(hello())"));
+			Console.WriteLine(hasMatchingParentheses2("((hello))"));
+			Console.WriteLine(hasMatchingParentheses2("(hello)"));
 
+			Console.WriteLine();
 
-
-
-
-
+			Console.WriteLine(hasMatchingParentheses2("(hello("));
+			Console.WriteLine(hasMatchingParentheses2(")hello)"));
+			Console.WriteLine(hasMatchingParentheses2(")hello("));
+			Console.WriteLine(hasMatchingParentheses2("hello(("));
+			Console.WriteLine(hasMatchingParentheses2("(hello"));
+			Console.WriteLine(hasMatchingParentheses2("((hello)"));
 		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
 
 	}
 }
