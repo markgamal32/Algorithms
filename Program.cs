@@ -211,8 +211,55 @@ namespace Algorithms_0
 			Console.WriteLine();
 		}
 
+		/*******    Stack   *******/
 
+		/* is a series of ordered objects just like list but follow the - LIFO - policy ,
+		 one example of the stack is the runtime stack which keep track of the execution of the program and processing nested functions,
+		 useful when you need to keep track on of state */
 
+		/* Stack algorithms- Theorizing an algorithm
+		 -- Print The Next Greater Element in The Array */ 
+		static void printNextGreaterElement(int[] arr)
+		{
+			if (arr.Length <= 0)
+			{
+				Console.WriteLine();
+				return;
+			}
+
+			Stack<int> stack = new Stack<int>();
+			stack.Push(arr[0]);
+
+			for (int i = 1; i < arr.Length; i++)
+			{
+				int next = arr[i];
+				if (stack.Count > 0)
+				{
+					int popped = stack.Pop();
+
+					while (popped < next)
+					{
+						Console.WriteLine(popped + "-->" + next);
+						if (stack.Count == 0)
+						{
+							break;
+						}
+						popped = stack.Pop();
+					}
+
+					if (popped > next)
+					{
+						stack.Push(popped);
+					}
+				}
+				stack.Push(next);
+			}
+
+			while (stack.Count > 0)
+			{
+				Console.WriteLine(stack.Pop() + " --> " + -1);
+			}
+		}
 
 
 
@@ -367,7 +414,7 @@ namespace Algorithms_0
 			printBinary(2);
 			printBinary(8);
 
-			/*******    Stack   *******/
+			/*******    Stack Example  *******/
 
 			/* is a series of ordered objects just like list but follow the - LIFO - policy ,
 			 one example of the stack is the runtime stack which keep track of the execution of the program and processing nested functions,
@@ -391,6 +438,20 @@ namespace Algorithms_0
 			// stack.TryPeek()
 			string item2;
 			Console.WriteLine(stack.TryPeek(out item2));
+
+			/* Stack algorithms- Theorizing an algorithm 
+			 -- Print The Next Greater Element in The Array -- */
+
+
+			int[] stackArr = new int[] { 15, 8, 4, 10 };
+			int[] stackArr1 = new int[] { 2 };
+			int[] stackArr2 = new int[] { 2, 3 };
+			int[] stackArr3 = new int[] { };
+
+			printNextGreaterElement(stackArr);
+			printNextGreaterElement(stackArr1);
+			printNextGreaterElement(stackArr2);
+			printNextGreaterElement(stackArr3);
 
 
 
